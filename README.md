@@ -4,7 +4,8 @@
 ### Construir
 
 ```
-  go get -u -v git.8bit.com.py/8Bit/medidores
+  git clone git@git.8bit.com.py:8Bit/medidores.git
+  cd medidores
   go mod download
   go build -a -o medidores cmd/app
 ```
