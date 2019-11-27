@@ -16,7 +16,7 @@ const dialecto = "postgres"
 
 var (
 	flags = flag.NewFlagSet("migrate", flag.ExitOnError)
-	dir   = flags.String("dir", "/medidores/migrations", "directorio con archivos de migracion (.sql)")
+	dir   = flags.String("dir", "./migrations", "directorio con archivos de migracion (.sql)")
 )
 
 func main() {

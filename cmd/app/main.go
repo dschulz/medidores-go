@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	dbConn "medidores/adapter/gorm"
 	"medidores/app/app"
 	"medidores/app/router"
@@ -13,26 +12,22 @@ import (
 	vr "medidores/util/validator"
 )
 
-func inicio (w http.ResponseWriter, r *http.Request) {
-
-	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "<html><h1>Okay</h1></html>")
-
-}
-
 
 func main (){
+
+
 	appConf := config.AppConfig()
 
-	r := mux.NewRouter()
-
-	db, _ := dbConn.New(appConf)
-
-	// TODO: Arreglar este desastre
-
-	r.HandleFunc("/", inicio)
-
 	logger := lr.New(appConf.Debug)
+
+	db, err := dbConn.New(appConf)
+	if err != nil {
+		logger.Fatal().Err(err).Msg("")
+		return
+	}
+	if appConf.Debug {
+		db.LogMode(true)
+	}
 
 	validator := vr.New()
 
@@ -40,7 +35,10 @@ func main (){
 
 	appRouter := router.New(application)
 
-	address := ":3000"
+	address := fmt.Sprintf(":%d", appConf.Server.Port)
+
+	logger.Info().Msgf("Iniciando servicio en %v", address)
+
 
 	s := &http.Server{
 		Addr:         address,
@@ -51,7 +49,7 @@ func main (){
 	}
 
 	if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		//requestlog.Fatal().Err(err).Msg("Server startup failed")
+		logger.Fatal().Err(err).Msg("No se pudo iniciar el servicio")
 		fmt.Println(err)
 	}
 }

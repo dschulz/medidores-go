@@ -1,28 +1,24 @@
 version: "3"
 services:
   db:
-
     image: "postgres"
-
     container_name: "pgsql_medidores"
-
-    environment:
-      - POSTGRES_USER=medidores
-      - POSTGRES_PASSWORD=medidores
-      - POSTGRES_DB=medidores
-
+    env_file:
+      - ./docker/db/env.sh
     ports:
       - "5432:5432"
-
     networks:
       - backend
-
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
   app:
     build: .
     image: "medidores:latest"
+    depends_on:
+      - db
+    env_file:
+      - ./docker/app/env.sh
     networks:
       - backend
     ports:

@@ -26,23 +26,20 @@
 git clone git@git.8bit.com.py:8Bit/medidores.git
 cd medidores
 go mod download
+
+go build -a -o migrate cmd/migrate
 go build -a -o medidores cmd/app
 ```
 
 
 ### Ejecutar
 
-- Primero crear un archivo con la configuración. Se necesita tener un servidor PostgreSQL corriendo. La configuración debe contener usuario, password, host, etc.
-
-```
-    (pendiente)
-```
 
 - Ejecutar
 
 ```
-source config
-./medidores
+
+./local.sh
 
 ```
    

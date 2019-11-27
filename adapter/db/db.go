@@ -1,9 +1,12 @@
 package db
 
 import (
+
 	"database/sql"
 	"medidores/adapter/common"
 	"medidores/config"
+
+	_ "github.com/lib/pq"
 )
 
 func New(conf *config.Conf) (*sql.DB, error) {
@@ -17,7 +20,7 @@ func New(conf *config.Conf) (*sql.DB, error) {
 		SSLMode:  conf.Db.SSLMode,
 	}
 
-	pgConnString := pgcnf.ConnString()
+	var pgConnString = pgcnf.ConnString()
 
 	return sql.Open("postgres", pgConnString)
 
