@@ -13,10 +13,12 @@
 ### Ejecutar
 
 - Primero crear un archivo con la configuración
+
  ```
     (pendiente)
 ```
 - Ejecutar
+
 ```
 source config
 ./medidores
@@ -25,6 +27,7 @@ source config
 ## Docker
 
 - Iniciar aplicación:
+
 ```
 docker run -it --rm -p 3000:3000 dschulzg/medidores:latest
 ```
@@ -35,10 +38,13 @@ docker run -it --rm -p 3000:3000 dschulzg/medidores:latest
 ### docker-compose
 
 - Iniciar aplicación y servidor PostgreSQL
+
 ```  
 docker-compose up
 ```
+
 - Detener aplicación y servidor PostgreSQL
+
 ```  
 docker-compose down
 ```
