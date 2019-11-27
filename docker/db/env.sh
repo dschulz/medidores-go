@@ -1,6 +1,4 @@
 
-
-
-export POSTGRES_USER="medidores"
-export POSTGRES_PASSWORD="medidores"
-export POSTGRES_DB="medidores"
+POSTGRES_USER=medidores
+POSTGRES_PASSWORD=medidores
+POSTGRES_DB=medidores

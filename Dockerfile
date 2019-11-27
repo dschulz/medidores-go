@@ -28,9 +28,15 @@ LABEL org.label-schema.docker.cmd="docker run --name medidores01 --detach --publ
 LABEL maintainer="admin@8bit.com.py"
 LABEL org.label-schema.vcs-url="https://git.8bit.com.py/8Bit/medidores"
 
-WORKDIR /usr/local/bin
+RUN mkdir -pv /aplicacion/bin
 
-COPY --from=constructor /go/src/medidores/medidores .
+WORKDIR /aplicacion
+
+COPY --from=constructor /go/src/medidores/medidores ./bin
+COPY --from=constructor /go/src/medidores/migrate ./bin
+COPY --from=constructor /go/src/medidores/docker/app/entrypoint.sh ./bin
+COPY --from=constructor /go/src/medidores/migrations ./migrations
+
 
 # Descomentar esta linea para correr en modo "production":
 # ENV GO_ENV=prod
@@ -46,4 +52,4 @@ EXPOSE 3000
 # Iniciar con exec para hacer fork/exit
 #CMD exec /usr/local/bin/medidores
 
-ENTRYPOINT ["/usr/local/bin/medidores"]
+ENTRYPOINT ["/aplicacion/bin/entrypoint.sh"]

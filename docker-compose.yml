@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   db:
     image: "postgres"
@@ -13,8 +13,15 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
 
   app:
-    build: .
+    build:
+      context: .
+      args:
+        VERSION_TAG: latest
+        BUILD_TSTAMP: '2019-11-27T21:27:55Z'
+
+
     image: "medidores:latest"
+
     depends_on:
       - db
     env_file:

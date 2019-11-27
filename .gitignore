@@ -2,3 +2,4 @@
 .idea
 /medidores
 /migrate
+/postgres-data/
