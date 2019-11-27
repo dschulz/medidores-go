@@ -29,12 +29,15 @@ source config
    
 ## Docker
 
-- Iniciar aplicación:
+Para iniciar aplicación con la última versión subida al [registry de Docker](htps://hub.docker.com)
 
 ```
+
 docker run -it --rm -p 3000:3000 dschulzg/medidores:latest
 
 ```
+
+La opción `--rm` elimina el container una vez que la aplicación termina.
 
 *PENDIENTE:* se debe tener un volumen con el archivo de configuración y pasar con el argumento `-v` o `--mount type=bind,source...,target...`
 
