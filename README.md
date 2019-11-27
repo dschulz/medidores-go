@@ -12,22 +12,22 @@
 
 ### Ejecutar
 
-1. Primero crear un archivo con la configuración
-    ```
+- Primero crear un archivo con la configuración
+ ```
     (pendiente)
-    ```
-2. Ejecutar
-    ```
-    source config
-    ./medidores
-    ```
+```
+- Ejecutar
+```
+source config
+./medidores
+```
    
 ## Docker
 
 - Iniciar aplicación:
-    ```
-    docker run -it --rm -p 3000:3000 dschulzg/medidores:latest
-    ```
+```
+docker run -it --rm -p 3000:3000 dschulzg/medidores:latest
+```
 
 *PENDIENTE:* se debe tener un volumen con el archivo de configuración y pasar con el argumento `-v` o `--mount type=bind,source...,target...`
 
@@ -35,10 +35,10 @@
 ### docker-compose
 
 - Iniciar aplicación y servidor PostgreSQL
-    ```  
-    docker-compose up
-    ```
+```  
+docker-compose up
+```
 - Detener aplicación y servidor PostgreSQL
-    ```  
-    docker-compose down
-    ```
+```  
+docker-compose down
+```
