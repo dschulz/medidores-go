@@ -1,6 +1,25 @@
 # medidores
 ## API para recolección de lecturas de medidores de agua
 
+### NOTA: ESTO ES EXPERIMENTAL. Faltan muchas cosas, esto es solo un esqueleto por ahora.
+
+*Entre otras cosas, faltan:*
+
+- [ ] Los modelos de datos y sus migraciones
+- [ ] Las definiciones de rutas
+- [ ] Los handlers para las definiciones de rutas
+- [ ] Arreglar docker-compose.yml para que se pueda levantar un servidor PostgreSQL containerizado y luego la aplicación
+- [ ] Documentar
+- [ ] Implementar integración continua
+- [ ] Tests de todo
+
+*Lo que ya está mas o menos definido y funcional:*
+
+- [x] Organización de packages
+- [x] Packages básicos para validación, logging, routers, configuración, etc.
+- [x] Dockerfile funcional
+- [x] Scripts para construir imágenes y subir a hub.docker.com
+
 ### Construir
 
 ```
