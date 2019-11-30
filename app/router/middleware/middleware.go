@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+// ContentTypeJson agrega una entrada en el header de cada respuesta
+// fijando el Content-Type
 func ContentTypeJson(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json;charset=utf8")
@@ -13,6 +15,7 @@ func ContentTypeJson(next http.Handler) http.Handler {
 }
 
 
+// StripTrailingSlash remueve un / al final de URL.Path
 func StripTrailingSlash(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
