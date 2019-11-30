@@ -9,6 +9,7 @@ require (
 	github.com/joeshaw/envdecode v0.0.0-20190604014844-d6d9849fcc2c
 	github.com/leodido/go-urn v1.2.0 // indirect
 	github.com/lib/pq v1.1.1
+	github.com/oklog/ulid/v2 v2.0.2 // indirect
 	github.com/pressly/goose v2.6.0+incompatible
 	github.com/rs/zerolog v1.17.2
 	gopkg.in/go-playground/validator.v9 v9.30.2

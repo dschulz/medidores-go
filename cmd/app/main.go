@@ -5,6 +5,7 @@ import (
 	dbConn "medidores/adapter/gorm"
 	"medidores/app/app"
 	"medidores/app/router"
+	"medidores/app/router/middleware"
 	"medidores/config"
 	"net/http"
 
@@ -42,7 +43,7 @@ func main (){
 
 	s := &http.Server{
 		Addr:         address,
-		Handler:      appRouter,
+		Handler:      middleware.StripTrailingSlash(appRouter),
 		ReadTimeout:  appConf.Server.TimeoutRead,
 		WriteTimeout: appConf.Server.TimeoutWrite,
 		IdleTimeout:  appConf.Server.TimeoutIdle,
